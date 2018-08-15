@@ -1,5 +1,5 @@
 package com.vladris.poke.details;
 
-public enum TypeGuard2 {
+public enum TypeGuard{{ i }} {
 
 }
