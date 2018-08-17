@@ -1,13 +1,20 @@
 import jinja2
 
 TEMPLATE_PATH = "./"
-SRC_DETAILS_PATH = "../src/com/vladris/poke/details"
+SRC_PATH = "../src/com/vladris/poke"
+SRC_DETAILS_PATH = f"{SRC_PATH}/details"
 
-templateLoader = jinja2.FileSystemLoader(searchpath=TEMPLATE_PATH)
-templateEnv = jinja2.Environment(loader=templateLoader)
+templates = {
+    "TypeGuard.java": SRC_DETAILS_PATH,
+    "Variant.java": SRC_PATH
+}
 
-template = templateEnv.get_template("TypeGuard.java.template")
+for file in templates:
+    templateLoader = jinja2.FileSystemLoader(searchpath=TEMPLATE_PATH)
+    templateEnv = jinja2.Environment(loader=templateLoader)
+    template = templateEnv.get_template(f"{file}.template")
 
-for i in range(1, 9):
-    with open(f"{SRC_DETAILS_PATH}/TypeGuard{i}.java", "w") as f: 
-        f.writelines(template.render(i=i))
+    for i in range(1, 9):
+        fileName, ext = file.split(".")
+        with open(f"{templates[file]}/{fileName}{i}.{ext}", "w") as f: 
+            f.writelines(template.render(types=i))

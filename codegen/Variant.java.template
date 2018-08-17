@@ -1,0 +1,45 @@
+package com.vladris.poke;
+
+import com.vladris.poke.details.*;
+{%- set args = "T" + range(1, types + 1) | join(", T") %}
+
+public class Variant{{ types }}<{{ args }}> extends VariantBase {
+	// Private constructor explicitly sets index
+	private <T> Variant{{ types }}(T item, byte index) {
+		super(item, index);
+	}
+	
+	// TypeGuard* are used to disambiguate methods after type erasure, no argument
+	// should be supplied - eg. new Variant2<String, Byte>("Hello");
+{%- for i in range(1, types + 1) %}
+	public Variant{{ types }}(T{{ i }} item, TypeGuard{{ i }} ...guard) {
+		this(item, (byte){{ i - 1 }});
+	}
+{% endfor %}
+	// set methods re-assign the contained item
+{%- for i in range(1, types + 1) %}
+	public void set(T{{ i }} item, TypeGuard{{ i }} ...guard) {
+		set{{ i }}(item);
+	}
+{% endfor %}
+	// set1, set2... explicitly set the element at the given index so no
+	// disambiguation is needed (no TypeGuard* arguments)
+{%- for i in range(1, types + 1) %}
+	public void set{{ i }}(T{{ i }} item) {
+		set(item, (byte){{ i - 1 }});
+	}
+{% endfor %}
+	// make factories for each variant type
+{%- for i in range(1, types + 1) %}
+	public static <{{ args }}> Variant{{ types }}<{{ args }}> make(T{{ i }} item, TypeGuard{{ i }} ...guard) {
+		return new Variant{{ types }}<{{ args }}>(item);
+	}
+{% endfor %}
+	// make1, make2... explicitly set the element at the given index, like the
+	// set1, set2... methods
+{%- for i in range(1, types + 1) %}
+	public static <{{ args }}> Variant{{ types }}<{{ args }}> make{{ i }}(T{{ i }} item) {
+		return new Variant{{ types }}<{{ args }}>(item, (byte){{ i }});
+	}
+{% endfor %}
+}
