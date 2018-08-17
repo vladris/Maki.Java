@@ -50,7 +50,8 @@ class VariantBaseTest {
 		
 		// Should throw when attempting to get out the wrong type
 		assertThrows(ClassCastException.class, () -> {
-			Integer value = variant.<Integer>get();		
+			@SuppressWarnings("unused")
+			Integer value = variant.<Integer>get();
 		});
 	}
 
