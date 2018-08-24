@@ -39,7 +39,7 @@ public class Variant{{ types }}<{{ args }}> extends VariantBase {
 	// set1, set2... methods
 {%- for i in range(1, types + 1) %}
 	public static <{{ args }}> Variant{{ types }}<{{ args }}> make{{ i }}(T{{ i }} item) {
-		return new Variant{{ types }}<{{ args }}>(item, (byte){{ i }});
+		return new Variant{{ types }}<{{ args }}>(item, (byte){{ i - 1 }});
 	}
 {% endfor %}
 }

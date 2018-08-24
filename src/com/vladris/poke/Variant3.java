@@ -65,15 +65,15 @@ public class Variant3<T1, T2, T3> extends VariantBase {
 	// make1, make2... explicitly set the element at the given index, like the
 	// set1, set2... methods
 	public static <T1, T2, T3> Variant3<T1, T2, T3> make1(T1 item) {
-		return new Variant3<T1, T2, T3>(item, (byte)1);
+		return new Variant3<T1, T2, T3>(item, (byte)0);
 	}
 
 	public static <T1, T2, T3> Variant3<T1, T2, T3> make2(T2 item) {
-		return new Variant3<T1, T2, T3>(item, (byte)2);
+		return new Variant3<T1, T2, T3>(item, (byte)1);
 	}
 
 	public static <T1, T2, T3> Variant3<T1, T2, T3> make3(T3 item) {
-		return new Variant3<T1, T2, T3>(item, (byte)3);
+		return new Variant3<T1, T2, T3>(item, (byte)2);
 	}
 
 }

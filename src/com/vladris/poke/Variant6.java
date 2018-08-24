@@ -113,27 +113,27 @@ public class Variant6<T1, T2, T3, T4, T5, T6> extends VariantBase {
 	// make1, make2... explicitly set the element at the given index, like the
 	// set1, set2... methods
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make1(T1 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)1);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)0);
 	}
 
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make2(T2 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)2);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)1);
 	}
 
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make3(T3 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)3);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)2);
 	}
 
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make4(T4 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)4);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)3);
 	}
 
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make5(T5 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)5);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)4);
 	}
 
 	public static <T1, T2, T3, T4, T5, T6> Variant6<T1, T2, T3, T4, T5, T6> make6(T6 item) {
-		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)6);
+		return new Variant6<T1, T2, T3, T4, T5, T6>(item, (byte)5);
 	}
 
 }
