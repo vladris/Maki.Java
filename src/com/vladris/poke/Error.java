@@ -1,28 +1,37 @@
 package com.vladris.poke;
 
 public class Error<T> {
+	private Either<Exception, T> either;
+	
+	public Error(Exception ex) {
+		either = Either.makeLeft(ex);
+	}
+	
+	public Error(T value) {
+		either = Either.makeRight(value);
+	}
+	
 	public boolean isError() {
-		return false;
+		return either.isLeft();
 	}
 	
 	public boolean hasValue() {
-		return false;
+		return either.isRight();
+	}
+
+	public Exception getError() {
+		return either.getLeft();
 	}
 	
 	public T getValue() {
-		return null;
+		return either.getRight();
 	}
-	
-	public Exception getError() {
-		return null;
-	}
-	
 	
 	public static <T> Error<T> makeError(Exception ex) {
-		return null;
+		return new Error<T>(ex);
 	}
 	
 	public static <T> Error<T> makeValue(T value) {
-		return null;
+		return new Error<T>(value);
 	}
 }
