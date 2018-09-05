@@ -34,4 +34,13 @@ public class Error<T> {
 	public static <T> Error<T> makeValue(T value) {
 		return new Error<T>(value);
 	}
+	
+	public static <T> Error<T> make(ThrowingSupplier<T> supplier) {
+		try {
+			return makeValue(supplier.get());
+		}
+		catch (Exception ex) {
+			return makeError(ex);
+		}
+	}
 }

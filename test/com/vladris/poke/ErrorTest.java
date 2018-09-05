@@ -25,4 +25,15 @@ class ErrorTest {
 		assertFalse(error.isError());
 		assertThrows(ClassCastException.class, () -> error.getError());
 	}
+	
+	@Test
+	public void testMakeFromCallable() {
+		Error<String> error = Error.make(() -> { throw new Exception(); });
+		
+		assertTrue(error.isError());
+		
+		error = Error.make(() -> "Hello");
+		
+		assertTrue(error.hasValue());
+	}
 }
