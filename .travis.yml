@@ -4,6 +4,3 @@ jdk:
   - oraclejdk8
 
 script: ant test
-
-before_install:
-  - cd java
