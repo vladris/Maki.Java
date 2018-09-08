@@ -18,5 +18,11 @@ for file in templates:
 
     for i in range(1, 9):
         fileName, ext = file.split(".")
-        with open(f"{templates[file]}/{fileName}{i}.{ext}", "w") as f: 
+
+        if fileName.endswith("Test"):
+            fileName, suffix = fileName[0:-4], "Test"
+        else:
+            suffix = ""
+
+        with open(f"{templates[file]}/{fileName}{i}{suffix}.{ext}", "w") as f: 
             f.writelines(template.render(types=i))

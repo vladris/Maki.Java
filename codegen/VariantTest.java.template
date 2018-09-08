@@ -5,17 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 {%- set args = "T" + range(1, types + 1) | join(", T") %}
 
-public class VariantTest{{ types }} {
+public class Variant{{ types }}Test {
 {%- for i in range(1, types + 1) %}
     class T{{ i }} { }
 {% endfor %}
 
-/*
 {%- for i in range(1, types + 1) %}
     @Test
 	public void VariantNewTest{{ i }}() {
         T{{ i }} value = new T{{ i }}();
-        Variant{{ types }}<{{ args }}> variant = new Variant{{ types }}<>(value);
+        Variant{{ types }}<{{ args }}> variant = new Variant{{ types }}<{{ args }}>(value);
 
         assertEquals({{ i - 1 }}, variant.getIndex());
         assertEquals(value, variant.get());
@@ -41,5 +40,4 @@ public class VariantTest{{ types }} {
         assertEquals(value2, variant.get());
 	}
 {% endfor %}
-*/
 }

@@ -4,17 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class VariantTest2 {
+public class Variant2Test {
     class T1 { }
 
     class T2 { }
 
-
-/*
     @Test
 	public void VariantNewTest1() {
         T1 value = new T1();
-        Variant2<T1, T2> variant = new Variant2<>(value);
+        Variant2<T1, T2> variant = new Variant2<T1, T2>(value);
 
         assertEquals(0, variant.getIndex());
         assertEquals(value, variant.get());
@@ -43,7 +41,7 @@ public class VariantTest2 {
     @Test
 	public void VariantNewTest2() {
         T2 value = new T2();
-        Variant2<T1, T2> variant = new Variant2<>(value);
+        Variant2<T1, T2> variant = new Variant2<T1, T2>(value);
 
         assertEquals(1, variant.getIndex());
         assertEquals(value, variant.get());
@@ -69,5 +67,4 @@ public class VariantTest2 {
         assertEquals(value2, variant.get());
 	}
 
-*/
 }

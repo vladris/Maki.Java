@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class VariantTest8 {
+public class Variant8Test {
     class T1 { }
 
     class T2 { }
@@ -21,12 +21,10 @@ public class VariantTest8 {
 
     class T8 { }
 
-
-/*
     @Test
 	public void VariantNewTest1() {
         T1 value = new T1();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(0, variant.getIndex());
         assertEquals(value, variant.get());
@@ -55,7 +53,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest2() {
         T2 value = new T2();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(1, variant.getIndex());
         assertEquals(value, variant.get());
@@ -84,7 +82,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest3() {
         T3 value = new T3();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(2, variant.getIndex());
         assertEquals(value, variant.get());
@@ -113,7 +111,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest4() {
         T4 value = new T4();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(3, variant.getIndex());
         assertEquals(value, variant.get());
@@ -142,7 +140,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest5() {
         T5 value = new T5();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(4, variant.getIndex());
         assertEquals(value, variant.get());
@@ -171,7 +169,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest6() {
         T6 value = new T6();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(5, variant.getIndex());
         assertEquals(value, variant.get());
@@ -200,7 +198,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest7() {
         T7 value = new T7();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(6, variant.getIndex());
         assertEquals(value, variant.get());
@@ -229,7 +227,7 @@ public class VariantTest8 {
     @Test
 	public void VariantNewTest8() {
         T8 value = new T8();
-        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<>(value);
+        Variant8<T1, T2, T3, T4, T5, T6, T7, T8> variant = new Variant8<T1, T2, T3, T4, T5, T6, T7, T8>(value);
 
         assertEquals(7, variant.getIndex());
         assertEquals(value, variant.get());
@@ -255,5 +253,4 @@ public class VariantTest8 {
         assertEquals(value2, variant.get());
 	}
 
-*/
 }
