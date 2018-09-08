@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class VariantBaseTest {
+public class VariantBaseTest {
 	VariantBase variant;	
 
 	@BeforeEach
@@ -14,7 +14,7 @@ class VariantBaseTest {
 	}
 	
 	@Test
-	void testHashCode() {
+	public void testHashCode() {
 		assertEquals("Hello".hashCode(), variant.hashCode());
 		
 		VariantBase variant2 = new VariantBase("Hello", (byte)1);
@@ -23,7 +23,7 @@ class VariantBaseTest {
 	}
 
 	@Test
-	void testSet() {
+	public void testSet() {
 		assertTrue(variant.is(String.class));
 		assertEquals((byte)1, variant.getIndex());
 
@@ -34,18 +34,18 @@ class VariantBaseTest {
 	}
 
 	@Test
-	void testGetIndex() {
+	public void testGetIndex() {
 		assertEquals((byte)1, variant.getIndex());
 	}
 
 	@Test
-	void testIs() {
+	public void testIs() {
 		assertTrue(variant.is(String.class));
 		assertFalse(variant.is(Integer.class));
 	}
 
 	@Test
-	void testGet() {
+	public void testGet() {
 		assertEquals("Hello", variant.<String>get());
 		
 		// Should throw when attempting to get out the wrong type
@@ -56,7 +56,7 @@ class VariantBaseTest {
 	}
 
 	@Test
-	void testGetItem() {
+	public void testGetItem() {
 		Object obj = new Object();
 		
 		variant.set(obj, (byte)0);
@@ -65,7 +65,7 @@ class VariantBaseTest {
 	}
 
 	@Test
-	void testEqualsObject() {
+	public void testEqualsObject() {
 		// Same value, same index
 		VariantBase variant2 = new VariantBase("Hello", (byte)1);
 		assertTrue(variant.equals(variant2));
@@ -78,5 +78,4 @@ class VariantBaseTest {
 		VariantBase variant4 = new VariantBase(42, (byte)1);		
 		assertFalse(variant.equals(variant4));
 	}
-
 }

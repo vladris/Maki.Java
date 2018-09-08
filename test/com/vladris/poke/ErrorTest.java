@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ErrorTest {
+public class ErrorTest {
 	@Test
 	public void testError() {
 		Exception ex = new Exception();
