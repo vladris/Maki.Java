@@ -3,10 +3,12 @@ import jinja2
 TEMPLATE_PATH = "./"
 SRC_PATH = "../src/com/vladris/poke"
 SRC_DETAILS_PATH = f"{SRC_PATH}/details"
+TEST_PATH = "../test/com/vladris/poke"
 
 templates = {
     "TypeGuard.java": SRC_DETAILS_PATH,
-    "Variant.java": SRC_PATH
+    "Variant.java": SRC_PATH,
+    "VariantTest.java": TEST_PATH,
 }
 
 for file in templates:
