@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 public class VariantTest1 {
     class T1 { }
 
+
+/*
     @Test
 	public void VariantNewTest1() {
         T1 value = new T1();
@@ -36,4 +38,5 @@ public class VariantTest1 {
         assertEquals(value2, variant.get());
 	}
 
+*/
 }

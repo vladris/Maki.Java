@@ -10,6 +10,7 @@ public class VariantTest{{ types }} {
     class T{{ i }} { }
 {% endfor %}
 
+/*
 {%- for i in range(1, types + 1) %}
     @Test
 	public void VariantNewTest{{ i }}() {
@@ -40,4 +41,5 @@ public class VariantTest{{ types }} {
         assertEquals(value2, variant.get());
 	}
 {% endfor %}
+*/
 }

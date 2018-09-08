@@ -21,6 +21,8 @@ public class VariantTest8 {
 
     class T8 { }
 
+
+/*
     @Test
 	public void VariantNewTest1() {
         T1 value = new T1();
@@ -253,4 +255,5 @@ public class VariantTest8 {
         assertEquals(value2, variant.get());
 	}
 
+*/
 }
