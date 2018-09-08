@@ -3,7 +3,41 @@ package com.vladris.poke;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+{%- set args = "T" + range(1, types + 1) | join(", T") %}
 
 public class VariantTest{{ types }} {
+{%- for i in range(1, types + 1) %}
+    class T{{ i }} { }
+{% endfor %}
 
+{%- for i in range(1, types + 1) %}
+    @Test
+	public void VariantNewTest{{ i }}() {
+        T{{ i }} value = new T{{ i }}();
+        Variant{{ types }}<{{ args }}> variant = new Variant{{ types }}<>(value);
+
+        assertEquals({{ i - 1 }}, variant.getIndex());
+        assertEquals(value, variant.get());
+	}
+
+    @Test
+	public void VariantMakeTest{{ i }}() {
+        T{{ i }} value = new T{{ i }}();
+        Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(value);
+
+        assertEquals({{ i - 1 }}, variant.getIndex());
+        assertEquals(value, variant.get());
+	}
+
+    @Test
+	public void VariantSetTest{{ i }}() {
+        T{{ i }} value = new T{{ i }}();
+        T{{ i }} value2 = new T{{ i }}();
+        Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(value);
+        variant.set(value2);
+
+        assertNotEquals(value, variant.get());
+        assertEquals(value2, variant.get());
+	}
+{% endfor %}
 }
