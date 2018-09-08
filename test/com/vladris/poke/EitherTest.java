@@ -27,7 +27,7 @@ class EitherTest {
 	
 	@Test
 	public void testSetLeft() {
-		Either<String, Integer> either = new Either<>(42);
+		Either<String, Integer> either = new Either<String, Integer>(42);
 		
 		assertFalse(either.isLeft());
 		either.setLeft("Hello");
@@ -36,7 +36,7 @@ class EitherTest {
 	
 	@Test
 	public void testSetRight() {
-		Either<String, Integer> either = new Either<>("Hello");
+		Either<String, Integer> either = new Either<String, Integer>("Hello");
 		
 		assertFalse(either.isRight());
 		either.setRight(42);
