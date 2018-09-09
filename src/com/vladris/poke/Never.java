@@ -1,7 +1,6 @@
 package com.vladris.poke;
 
 /**
- * 
  * Represents an uninhabitable type.
  * 
  * <p>

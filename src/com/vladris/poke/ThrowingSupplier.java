@@ -1,7 +1,6 @@
 package com.vladris.poke;
 
 /**
- * 
  * Declares an interface similar to {@code Supplier<T>} which can also throw an exception.
  *
  * @param <T> Represents the type returned by {@code get}.

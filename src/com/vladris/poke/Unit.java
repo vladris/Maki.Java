@@ -1,7 +1,6 @@
 package com.vladris.poke;
 
 /**
- *
  * Represents a unit type.
  * 
  * <p>
