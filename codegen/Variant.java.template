@@ -2,42 +2,105 @@ package com.vladris.poke;
 
 import com.vladris.poke.details.*;
 {%- set args = "T" + range(1, types + 1) | join(", T") %}
+{%- set ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"] %}
 
+/**
+ * Represents a {{ types }}-type discriminate union.
+ *
+ * <pre>{@code
+ * class Sample {
+ *     static void Example() {
+ *         // A variant can hold a value of any of its generic types
+ *         Variant3<Integer, String, Double> variant = new Variant3<Integer, String, Double>(42);
+ *
+ *         // Can reassign variant with another of its generic types
+ *         variant.set("Hello world!");
+ *
+ *         // Check the type of the value currently inhabiting the variant
+ *         if (variant.is(String.class)) {
+ *             System.out.println("The string is: " + variant.<String>get());
+ *         }
+ *
+ *         variant.set(0.5);
+ *     }
+ * }
+ * }</pre>
+ *
+{%- for i in range(1, types + 1) %}
+ * @param <T{{ i }}> Represents the variants {{ ordinal[i - 1] }} type.
+{%- endfor %}
+ */
 public class Variant{{ types }}<{{ args }}> extends VariantBase {
 	// Private constructor explicitly sets index
 	private <T> Variant{{ types }}(T item, byte index) {
 		super(item, index);
 	}
 	
-	// TypeGuard* are used to disambiguate methods after type erasure, no argument
-	// should be supplied - eg. new Variant2<String, Byte>("Hello");
 {%- for i in range(1, types + 1) %}
+	/**
+	 * Creates a new Variant instance from an item of type {@code T{{ i }}}.
+	 *
+	 * @param item Item of type {@code T{{ i }}}.
+	 * @param guard TypeGuards are used to disambiguate methods after type 
+	 * erasure, no argument should be supplied.
+	 */
 	public Variant{{ types }}(T{{ i }} item, TypeGuard{{ i }} ...guard) {
 		this(item, (byte){{ i - 1 }});
 	}
 {% endfor %}
-	// set methods re-assign the contained item
+
 {%- for i in range(1, types + 1) %}
+	/**
+	 * Assigns an item of type {@code T{{ i }}} to the variant.
+	 *
+	 * @param item Item of type {@code T{{ i }}}.
+	 * @param guard TypeGuards are used to disambiguate methods after type 
+	 * erasure, no argument should be supplied.
+	 */
 	public void set(T{{ i }} item, TypeGuard{{ i }} ...guard) {
 		set{{ i }}(item);
 	}
 {% endfor %}
-	// set1, set2... explicitly set the element at the given index so no
-	// disambiguation is needed (no TypeGuard* arguments)
+
 {%- for i in range(1, types + 1) %}
+	/**
+	 * Explicitly assigns an item of type {@code T{{ i }}} at index {{ i - 1 }}.
+	 *
+	 * @param item Item of type {@code T{{ i }}}.
+	 */
 	public void set{{ i }}(T{{ i }} item) {
 		set(item, (byte){{ i - 1 }});
 	}
 {% endfor %}
-	// make factories for each variant type
+
 {%- for i in range(1, types + 1) %}
+	/**
+	 * Creates a new Variant given an item of type {@code T{{ i }}}.
+	 *
+{%- for i in range(1, types + 1) %}
+	 * @param <T{{ i }}> Represents the variants {{ ordinal[i - 1] }} type.
+{%- endfor %}
+	 * @param item Item of type {@code T{{ i }}}.
+	 * @param guard TypeGuards are used to disambiguate methods after type 
+	 * erasure, no argument should be supplied.
+	 * @return A Variant containing the given item.
+	 */
 	public static <{{ args }}> Variant{{ types }}<{{ args }}> make(T{{ i }} item, TypeGuard{{ i }} ...guard) {
 		return new Variant{{ types }}<{{ args }}>(item);
 	}
 {% endfor %}
-	// make1, make2... explicitly set the element at the given index, like the
-	// set1, set2... methods
+
 {%- for i in range(1, types + 1) %}
+	/**
+	 * Creates a new Variant given an item of type {@code T{{ i }}} explicitly
+	 * placed at index {{ i - 1 }}.
+	 *
+{%- for i in range(1, types + 1) %}
+	 * @param <T{{ i }}> Represents the variants {{ ordinal[i - 1] }} type.
+{%- endfor %}
+	 * @param item Item of type {@code T{{ i }}}.
+	 * @return A Variant containing the given item at index {{ i - 1 }}.
+	 */
 	public static <{{ args }}> Variant{{ types }}<{{ args }}> make{{ i }}(T{{ i }} item) {
 		return new Variant{{ types }}<{{ args }}>(item, (byte){{ i - 1 }});
 	}
