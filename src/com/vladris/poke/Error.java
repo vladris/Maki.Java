@@ -1,6 +1,7 @@
 package com.vladris.poke;
 
 import java.util.Random;
+import java.util.function.Function;
 
 /**
  * Error holds either a value of type {@code T} or an exception.
@@ -109,6 +110,34 @@ public class Error<T> {
 	 */
 	public void setError(Exception ex) {
 		either.setLeft(ex);
+	}
+	
+	/**
+	 * Maps the given function over the Error returning a new {@code Error<U>}.
+	 * 
+	 * @param <U> Type of return Error.
+	 * @param func Function to map over the Error.
+	 * @return New Error after calling the given function.
+	 */
+	public <U> Error<U> map(Function<T, U> func) {
+		if (hasValue())
+			return Error.makeValue(func.apply(getValue()));
+		else
+			return Error.makeError(getError());
+	}
+	
+	/**
+	 * Binds the given function to the Error returning a new {@code Error<U>}.
+	 * 
+	 * @param <U> Type of return Error.
+	 * @param func Function to bind to the Error.
+	 * @return New Error after calling the given function.
+	 */
+	public <U> Error<U> bind(Function<T, Error<U>> func) {
+		if (hasValue())
+			return func.apply(getValue());
+		else
+			return Error.makeError(getError());
 	}
 	
 	/**
