@@ -12,25 +12,25 @@ public class Variant{{ types }}Test {
 
 {%- for i in range(1, types + 1) %}
     @Test
-	public void VariantNewTest{{ i }}() {
+    public void variantNewTest{{ i }}() {
         T{{ i }} value = new T{{ i }}();
         Variant{{ types }}<{{ args }}> variant = new Variant{{ types }}<{{ args }}>(value);
 
         assertEquals({{ i - 1 }}, variant.getIndex());
         assertEquals(value, variant.get());
-	}
+    }
 
     @Test
-	public void VariantMakeTest{{ i }}() {
+    public void variantMakeTest{{ i }}() {
         T{{ i }} value = new T{{ i }}();
         Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(value);
 
         assertEquals({{ i - 1 }}, variant.getIndex());
         assertEquals(value, variant.get());
-	}
+    }
 
     @Test
-	public void VariantSetTest{{ i }}() {
+    public void variantSetTest{{ i }}() {
         T{{ i }} value = new T{{ i }}();
         T{{ i }} value2 = new T{{ i }}();
         Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(value);
@@ -38,6 +38,30 @@ public class Variant{{ types }}Test {
 
         assertNotEquals(value, variant.get());
         assertEquals(value2, variant.get());
-	}
+    }
+
+    @Test
+    public void variantApplyTest{{ i }}() {
+        Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(new T{{ i }}());
+
+        int result = variant.apply(
+{%- for i in range(1, types + 1) %}
+            (arg) -> {{ i }}{{ "," if i < types else ");" }}
+{%- endfor %}
+
+        assertEquals({{ i }}, result);
+    }
+
+    @Test
+    public void variantMapTest{{ i }}() {
+        Variant{{ types }}<{{ args }}> variant = Variant{{ types }}.make{{ i }}(new T{{ i }}());
+
+        Variant{{ types }}<{{ args }}> result = variant.map(
+{%- for i in range(1, types + 1) %}
+            (arg) -> arg{{ "," if i < types else ");" }}
+{%- endfor %}
+
+        assertEquals({{ i - 1 }}, result.getIndex());
+    }
 {% endfor %}
 }
