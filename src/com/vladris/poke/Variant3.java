@@ -1,5 +1,6 @@
 package com.vladris.poke;
 
+import java.util.function.Function;
 import com.vladris.poke.details.*;
 
 /**
@@ -125,6 +126,50 @@ public class Variant3<T1, T2, T3> extends VariantBase {
 	public void set3(T3 item) {
 		set(item, (byte)2);
 	}
+
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <R> Represents the return type of all functions.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 */
+	public <R> R apply(
+		Function<T1, R> func1,
+		Function<T2, R> func2,
+		Function<T3, R> func3) {
+		switch (getIndex()) {
+			case 0: return func1.apply(get());
+			case 1: return func2.apply(get());
+			default: return func3.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <U1> Represents the return type of {@code func1}.
+	 * @param <U2> Represents the return type of {@code func2}.
+	 * @param <U3> Represents the return type of {@code func3}.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 */
+	public <U1, U2, U3> Variant3<U1, U2, U3> map(
+		Function<T1, U1> func1,
+		Function<T2, U2> func2,
+		Function<T3, U3> func3) {
+		switch (getIndex()) {
+			case 0: return Variant3.make1(func1.apply(get()));
+			case 1: return Variant3.make2(func2.apply(get()));
+			default: return Variant3.make3(func3.apply(get()));
+		}
+	}
+
 
 	/**
 	 * Creates a new Variant given an item of type {@code T1}.

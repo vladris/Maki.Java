@@ -1,5 +1,6 @@
 package com.vladris.poke;
 
+import java.util.function.Function;
 import com.vladris.poke.details.*;
 
 /**
@@ -61,6 +62,36 @@ public class Variant1<T1> extends VariantBase {
 	public void set1(T1 item) {
 		set(item, (byte)0);
 	}
+
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <R> Represents the return type of all functions.
+	 * @param func1 Function to apply on type {@code T1}.
+	 */
+	public <R> R apply(
+		Function<T1, R> func1) {
+		switch (getIndex()) {
+			default: return func1.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <U1> Represents the return type of {@code func1}.
+	 * @param func1 Function to apply on type {@code T1}.
+	 */
+	public <U1> Variant1<U1> map(
+		Function<T1, U1> func1) {
+		switch (getIndex()) {
+			default: return Variant1.make1(func1.apply(get()));
+		}
+	}
+
 
 	/**
 	 * Creates a new Variant given an item of type {@code T1}.

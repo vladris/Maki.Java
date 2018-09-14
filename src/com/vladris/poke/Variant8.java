@@ -1,5 +1,6 @@
 package com.vladris.poke;
 
+import java.util.function.Function;
 import com.vladris.poke.details.*;
 
 /**
@@ -285,6 +286,85 @@ public class Variant8<T1, T2, T3, T4, T5, T6, T7, T8> extends VariantBase {
 	public void set8(T8 item) {
 		set(item, (byte)7);
 	}
+
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <R> Represents the return type of all functions.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 * @param func4 Function to apply on type {@code T4}.
+	 * @param func5 Function to apply on type {@code T5}.
+	 * @param func6 Function to apply on type {@code T6}.
+	 * @param func7 Function to apply on type {@code T7}.
+	 * @param func8 Function to apply on type {@code T8}.
+	 */
+	public <R> R apply(
+		Function<T1, R> func1,
+		Function<T2, R> func2,
+		Function<T3, R> func3,
+		Function<T4, R> func4,
+		Function<T5, R> func5,
+		Function<T6, R> func6,
+		Function<T7, R> func7,
+		Function<T8, R> func8) {
+		switch (getIndex()) {
+			case 0: return func1.apply(get());
+			case 1: return func2.apply(get());
+			case 2: return func3.apply(get());
+			case 3: return func4.apply(get());
+			case 4: return func5.apply(get());
+			case 5: return func6.apply(get());
+			case 6: return func7.apply(get());
+			default: return func8.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <U1> Represents the return type of {@code func1}.
+	 * @param <U2> Represents the return type of {@code func2}.
+	 * @param <U3> Represents the return type of {@code func3}.
+	 * @param <U4> Represents the return type of {@code func4}.
+	 * @param <U5> Represents the return type of {@code func5}.
+	 * @param <U6> Represents the return type of {@code func6}.
+	 * @param <U7> Represents the return type of {@code func7}.
+	 * @param <U8> Represents the return type of {@code func8}.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 * @param func4 Function to apply on type {@code T4}.
+	 * @param func5 Function to apply on type {@code T5}.
+	 * @param func6 Function to apply on type {@code T6}.
+	 * @param func7 Function to apply on type {@code T7}.
+	 * @param func8 Function to apply on type {@code T8}.
+	 */
+	public <U1, U2, U3, U4, U5, U6, U7, U8> Variant8<U1, U2, U3, U4, U5, U6, U7, U8> map(
+		Function<T1, U1> func1,
+		Function<T2, U2> func2,
+		Function<T3, U3> func3,
+		Function<T4, U4> func4,
+		Function<T5, U5> func5,
+		Function<T6, U6> func6,
+		Function<T7, U7> func7,
+		Function<T8, U8> func8) {
+		switch (getIndex()) {
+			case 0: return Variant8.make1(func1.apply(get()));
+			case 1: return Variant8.make2(func2.apply(get()));
+			case 2: return Variant8.make3(func3.apply(get()));
+			case 3: return Variant8.make4(func4.apply(get()));
+			case 4: return Variant8.make5(func5.apply(get()));
+			case 5: return Variant8.make6(func6.apply(get()));
+			case 6: return Variant8.make7(func7.apply(get()));
+			default: return Variant8.make8(func8.apply(get()));
+		}
+	}
+
 
 	/**
 	 * Creates a new Variant given an item of type {@code T1}.

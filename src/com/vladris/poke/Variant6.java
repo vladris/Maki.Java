@@ -1,5 +1,6 @@
 package com.vladris.poke;
 
+import java.util.function.Function;
 import com.vladris.poke.details.*;
 
 /**
@@ -221,6 +222,71 @@ public class Variant6<T1, T2, T3, T4, T5, T6> extends VariantBase {
 	public void set6(T6 item) {
 		set(item, (byte)5);
 	}
+
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <R> Represents the return type of all functions.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 * @param func4 Function to apply on type {@code T4}.
+	 * @param func5 Function to apply on type {@code T5}.
+	 * @param func6 Function to apply on type {@code T6}.
+	 */
+	public <R> R apply(
+		Function<T1, R> func1,
+		Function<T2, R> func2,
+		Function<T3, R> func3,
+		Function<T4, R> func4,
+		Function<T5, R> func5,
+		Function<T6, R> func6) {
+		switch (getIndex()) {
+			case 0: return func1.apply(get());
+			case 1: return func2.apply(get());
+			case 2: return func3.apply(get());
+			case 3: return func4.apply(get());
+			case 4: return func5.apply(get());
+			default: return func6.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given functions to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param <U1> Represents the return type of {@code func1}.
+	 * @param <U2> Represents the return type of {@code func2}.
+	 * @param <U3> Represents the return type of {@code func3}.
+	 * @param <U4> Represents the return type of {@code func4}.
+	 * @param <U5> Represents the return type of {@code func5}.
+	 * @param <U6> Represents the return type of {@code func6}.
+	 * @param func1 Function to apply on type {@code T1}.
+	 * @param func2 Function to apply on type {@code T2}.
+	 * @param func3 Function to apply on type {@code T3}.
+	 * @param func4 Function to apply on type {@code T4}.
+	 * @param func5 Function to apply on type {@code T5}.
+	 * @param func6 Function to apply on type {@code T6}.
+	 */
+	public <U1, U2, U3, U4, U5, U6> Variant6<U1, U2, U3, U4, U5, U6> map(
+		Function<T1, U1> func1,
+		Function<T2, U2> func2,
+		Function<T3, U3> func3,
+		Function<T4, U4> func4,
+		Function<T5, U5> func5,
+		Function<T6, U6> func6) {
+		switch (getIndex()) {
+			case 0: return Variant6.make1(func1.apply(get()));
+			case 1: return Variant6.make2(func2.apply(get()));
+			case 2: return Variant6.make3(func3.apply(get()));
+			case 3: return Variant6.make4(func4.apply(get()));
+			case 4: return Variant6.make5(func5.apply(get()));
+			default: return Variant6.make6(func6.apply(get()));
+		}
+	}
+
 
 	/**
 	 * Creates a new Variant given an item of type {@code T1}.
