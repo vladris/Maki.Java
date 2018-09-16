@@ -1,6 +1,6 @@
 package com.vladris.poke;
 
-import java.util.function.Function;
+import java.util.function.*;
 import com.vladris.poke.details.*;
 {%- set args = "T" + range(1, types + 1) | join(", T") %}
 {%- set argsU = "U" + range(1, types + 1) | join(", U") %}
@@ -24,6 +24,13 @@ import com.vladris.poke.details.*;
  *         }
  *
  *         variant.set(0.5);
+ *
+ *         // The right function will get picked depending on the value
+ *         // currently inhabiting the variant
+ *         variant.use(
+ *             (i) -> System.out.println(i + 1),
+ *             (s) -> System.out.println(s + "!"),
+ *             (d) -> System.out.println(d / 2));
  *     }
  * }
  * }</pre>
@@ -93,6 +100,26 @@ public class Variant{{ types }}<{{ args }}> extends VariantBase {
 			case {{ i }}: return func{{ i + 1 }}.apply(get());
 {%- endfor %}
 			default: return func{{ types }}.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given consumers to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+{%- for i in range(1, types + 1) %}
+	 * @param consumer{{ i }} Consumer to apply on type {@code T{{ i }}}.
+{%- endfor %}
+	 */
+	public void apply(
+{%- for i in range(1, types + 1) %}
+		Consumer<T{{ i }}> consumer{{ i }}{{ "," if i < types else ") {" }}
+{%- endfor %}
+		switch (getIndex()) {
+{%- for i in range(types - 1) %}
+			case {{ i }}: consumer{{ i + 1 }}.accept(get()); break;
+{%- endfor %}
+			default: consumer{{ types }}.accept(get());
 		}
 	}
 

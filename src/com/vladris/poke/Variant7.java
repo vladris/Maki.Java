@@ -1,6 +1,6 @@
 package com.vladris.poke;
 
-import java.util.function.Function;
+import java.util.function.*;
 import com.vladris.poke.details.*;
 
 /**
@@ -21,6 +21,13 @@ import com.vladris.poke.details.*;
  *         }
  *
  *         variant.set(0.5);
+ *
+ *         // The right function will get picked depending on the value
+ *         // currently inhabiting the variant
+ *         variant.use(
+ *             (i) -> System.out.println(i + 1),
+ *             (s) -> System.out.println(s + "!"),
+ *             (d) -> System.out.println(d / 2));
  *     }
  * }
  * }</pre>
@@ -285,6 +292,37 @@ public class Variant7<T1, T2, T3, T4, T5, T6, T7> extends VariantBase {
 			case 4: return func5.apply(get());
 			case 5: return func6.apply(get());
 			default: return func7.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given consumers to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param consumer1 Consumer to apply on type {@code T1}.
+	 * @param consumer2 Consumer to apply on type {@code T2}.
+	 * @param consumer3 Consumer to apply on type {@code T3}.
+	 * @param consumer4 Consumer to apply on type {@code T4}.
+	 * @param consumer5 Consumer to apply on type {@code T5}.
+	 * @param consumer6 Consumer to apply on type {@code T6}.
+	 * @param consumer7 Consumer to apply on type {@code T7}.
+	 */
+	public void apply(
+		Consumer<T1> consumer1,
+		Consumer<T2> consumer2,
+		Consumer<T3> consumer3,
+		Consumer<T4> consumer4,
+		Consumer<T5> consumer5,
+		Consumer<T6> consumer6,
+		Consumer<T7> consumer7) {
+		switch (getIndex()) {
+			case 0: consumer1.accept(get()); break;
+			case 1: consumer2.accept(get()); break;
+			case 2: consumer3.accept(get()); break;
+			case 3: consumer4.accept(get()); break;
+			case 4: consumer5.accept(get()); break;
+			case 5: consumer6.accept(get()); break;
+			default: consumer7.accept(get());
 		}
 	}
 

@@ -1,6 +1,6 @@
 package com.vladris.poke;
 
-import java.util.function.Function;
+import java.util.function.*;
 import com.vladris.poke.details.*;
 
 /**
@@ -21,6 +21,13 @@ import com.vladris.poke.details.*;
  *         }
  *
  *         variant.set(0.5);
+ *
+ *         // The right function will get picked depending on the value
+ *         // currently inhabiting the variant
+ *         variant.use(
+ *             (i) -> System.out.println(i + 1),
+ *             (s) -> System.out.println(s + "!"),
+ *             (d) -> System.out.println(d / 2));
  *     }
  * }
  * }</pre>
@@ -75,6 +82,19 @@ public class Variant1<T1> extends VariantBase {
 		Function<T1, R> func1) {
 		switch (getIndex()) {
 			default: return func1.apply(get());
+		}
+	}
+
+	/**
+	 * Applies one of the given consumers to the variant depending on the type
+	 * currently inhabiting the variant.
+	 *
+	 * @param consumer1 Consumer to apply on type {@code T1}.
+	 */
+	public void apply(
+		Consumer<T1> consumer1) {
+		switch (getIndex()) {
+			default: consumer1.accept(get());
 		}
 	}
 
