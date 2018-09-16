@@ -24,7 +24,7 @@ import com.vladris.poke.details.*;
  *
  *         // The right function will get picked depending on the value
  *         // currently inhabiting the variant
- *         variant.use(
+ *         variant.apply(
  *             (i) -> System.out.println(i + 1),
  *             (s) -> System.out.println(s + "!"),
  *             (d) -> System.out.println(d / 2));

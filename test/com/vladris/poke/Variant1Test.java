@@ -44,6 +44,10 @@ public class Variant1Test {
             (arg) -> 1);
 
         assertEquals(1, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> {  });
     }
 
     @Test

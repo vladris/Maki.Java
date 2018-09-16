@@ -50,6 +50,12 @@ public class Variant{{ types }}Test {
 {%- endfor %}
 
         assertEquals({{ i }}, result);
+
+        // apply overload with Consumer
+        variant.apply(
+{%- for j in range(1, types + 1) %}
+            (arg) -> { {{ "fail(\"Shouldn't be called\");" if j != i else "" }} }{{ "," if j < types else ");" }}
+{%- endfor %}
     }
 
     @Test

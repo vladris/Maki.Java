@@ -50,6 +50,12 @@ public class Variant3Test {
             (arg) -> 3);
 
         assertEquals(1, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -103,6 +109,12 @@ public class Variant3Test {
             (arg) -> 3);
 
         assertEquals(2, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -156,6 +168,12 @@ public class Variant3Test {
             (arg) -> 3);
 
         assertEquals(3, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  });
     }
 
     @Test

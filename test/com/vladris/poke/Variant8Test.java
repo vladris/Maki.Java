@@ -65,6 +65,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(1, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -128,6 +139,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(2, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -191,6 +213,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(3, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -254,6 +287,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(4, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -317,6 +361,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(5, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -380,6 +435,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(6, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -443,6 +509,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(7, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  },
+            (arg) -> { fail("Shouldn't be called"); });
     }
 
     @Test
@@ -506,6 +583,17 @@ public class Variant8Test {
             (arg) -> 8);
 
         assertEquals(8, result);
+
+        // apply overload with Consumer
+        variant.apply(
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> { fail("Shouldn't be called"); },
+            (arg) -> {  });
     }
 
     @Test
