@@ -110,6 +110,7 @@ public class Variant2<T1, T2> extends VariantBase {
 	 * @param <R> Represents the return type of all functions.
 	 * @param func1 Function to apply on type {@code T1}.
 	 * @param func2 Function to apply on type {@code T2}.
+	 * @return Result of applying function.
 	 */
 	public <R> R apply(
 		Function<T1, R> func1,
@@ -144,6 +145,7 @@ public class Variant2<T1, T2> extends VariantBase {
 	 * @param <U2> Represents the return type of {@code func2}.
 	 * @param func1 Function to apply on type {@code T1}.
 	 * @param func2 Function to apply on type {@code T2}.
+	 * @return Variant containing the result of applying the selected function.
 	 */
 	public <U1, U2> Variant2<U1, U2> map(
 		Function<T1, U1> func1,

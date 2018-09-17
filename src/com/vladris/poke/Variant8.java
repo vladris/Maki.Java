@@ -308,6 +308,7 @@ public class Variant8<T1, T2, T3, T4, T5, T6, T7, T8> extends VariantBase {
 	 * @param func6 Function to apply on type {@code T6}.
 	 * @param func7 Function to apply on type {@code T7}.
 	 * @param func8 Function to apply on type {@code T8}.
+	 * @return Result of applying function.
 	 */
 	public <R> R apply(
 		Function<T1, R> func1,
@@ -384,6 +385,7 @@ public class Variant8<T1, T2, T3, T4, T5, T6, T7, T8> extends VariantBase {
 	 * @param func6 Function to apply on type {@code T6}.
 	 * @param func7 Function to apply on type {@code T7}.
 	 * @param func8 Function to apply on type {@code T8}.
+	 * @return Variant containing the result of applying the selected function.
 	 */
 	public <U1, U2, U3, U4, U5, U6, U7, U8> Variant8<U1, U2, U3, U4, U5, U6, U7, U8> map(
 		Function<T1, U1> func1,

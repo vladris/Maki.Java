@@ -90,6 +90,7 @@ public class Variant{{ types }}<{{ args }}> extends VariantBase {
 {%- for i in range(1, types + 1) %}
 	 * @param func{{ i }} Function to apply on type {@code T{{ i }}}.
 {%- endfor %}
+	 * @return Result of applying function.
 	 */
 	public <R> R apply(
 {%- for i in range(1, types + 1) %}
@@ -133,6 +134,7 @@ public class Variant{{ types }}<{{ args }}> extends VariantBase {
 {%- for i in range(1, types + 1) %}
 	 * @param func{{ i }} Function to apply on type {@code T{{ i }}}.
 {%- endfor %}
+	 * @return Variant containing the result of applying the selected function.
 	 */
 	public <{{ argsU }}> Variant{{ types }}<{{ argsU }}> map(
 {%- for i in range(1, types + 1) %}
