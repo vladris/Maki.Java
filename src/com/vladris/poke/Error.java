@@ -1,6 +1,5 @@
 package com.vladris.poke;
 
-import java.util.Random;
 import java.util.function.Function;
 
 /**
