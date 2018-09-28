@@ -24,23 +24,23 @@ using a base type and inheritance, a ``Variant`` represents a closed set of
 types and no relationship between them is needed.
 
 ```java
-    Variant3<String, Integer, Double> variant = new Variant3<>("Hello world!");
+Variant3<String, Integer, Double> variant = new Variant3<>("Hello world!");
 
-    // Use is(T.class) to test for inhabiting type, <T>get() to retrieve it
-    assertTrue(variant.is(String.class));
-    System.out.println(variant.<String>get());
+// Use is(T.class) to test for inhabiting type, <T>get() to retrieve it
+assertTrue(variant.is(String.class));
+System.out.println(variant.<String>get());
 
-    // Can reassign another type
-    variant.set(42);
+// Can reassign another type
+variant.set(42);
 
-    assertTrue(variant.is(Integer.class));
+assertTrue(variant.is(Integer.class));
 
-    // Use Apply and supply it with an action or function for each possible type,
-    // the one corresponding to the inhabiting type will get called
-    variant.apply(
-        s -> { System.out.println("It's a string!"); },
-        i -> { System.out.println("It's an int!"); },
-        d -> { System.out.println("It's a double!"); });
+// Use Apply and supply it with an action or function for each possible type,
+// the one corresponding to the inhabiting type will get called
+variant.apply(
+    s -> { System.out.println("It's a string!"); },
+    i -> { System.out.println("It's an int!"); },
+    d -> { System.out.println("It's a double!"); });
 ```
 
 ### Either
@@ -49,19 +49,19 @@ types and no relationship between them is needed.
 type.
 
 ```java
-    Either<String, Integer> either = Either.makeLeft("Hello world!");
+Either<String, Integer> either = Either.makeLeft("Hello world!");
 
-    assertTrue(either.isLeft());
-    assertFalse(either.isRight());
+assertTrue(either.isLeft());
+assertFalse(either.isRight());
 
-    System.out.println(either.getLeft());
+System.out.println(either.getLeft());
 
-    either.setRight(42);
+either.setRight(42);
 
-    assertFalse(either.isLeft());
-    assertTrue(either.isRight());
+assertFalse(either.isLeft());
+assertTrue(either.isRight());
 
-    System.out.println(2 * either.getRight());
+System.out.println(2 * either.getRight());
 ```
 
 ### Error
@@ -71,21 +71,21 @@ packaging exceptions as part of the return type and handling them at any point
 in the code.
 
 ```java
-    // Initialize with a function that may throw
-    Error<String> error = Error.make(() ->
-        {
-            Random random = new Random();
+// Initialize with a function that may throw
+Error<String> error = Error.make(() ->
+    {
+        Random random = new Random();
 
-            if (random.nextBoolean())
-                throw new Exception();
+        if (random.nextBoolean())
+            throw new Exception();
 
-            return "Success";
-        });
+        return "Success";
+    });
 
-    if (error.hasValue())
-        System.out.println(error.getValue());
-    else
-        System.out.println("Exception was thrown: " + error.getError());
+if (error.hasValue())
+    System.out.println(error.getValue());
+else
+    System.out.println("Exception was thrown: " + error.getError());
 ```
 
 ### Never
@@ -93,12 +93,12 @@ in the code.
 Using ``Never`` as a return type explicitly shows the function cannot return.
 
 ```java
-    public Never LoopsForever() {
-        while (true) {
-        }
+public Never LoopsForever() {
+    while (true) {
     }
+}
 
-    public Never AlwaysThrows() throws Exception {
-        throw new Exception();
-    }
+public Never AlwaysThrows() throws Exception {
+    throw new Exception();
+}
 ```
