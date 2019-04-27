@@ -1,9 +1,9 @@
 import jinja2
 
 TEMPLATE_PATH = "./"
-SRC_PATH = "../src/com/vladris/poke"
+SRC_PATH = "../src/com/vladris/maki"
 SRC_DETAILS_PATH = f"{SRC_PATH}/details"
-TEST_PATH = "../test/com/vladris/poke"
+TEST_PATH = "../test/com/vladris/maki"
 
 templates = {
     "TypeGuard.java": SRC_DETAILS_PATH,

@@ -1,4 +1,4 @@
-package com.vladris.poke;
+package com.vladris.maki;
 
 import static org.junit.jupiter.api.Assertions.*;
 

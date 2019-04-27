@@ -1,7 +1,7 @@
-package com.vladris.poke;
+package com.vladris.maki;
 
 import java.util.function.*;
-import com.vladris.poke.details.*;
+import com.vladris.maki.details.*;
 {%- set args = "T" + range(1, types + 1) | join(", T") %}
 {%- set argsU = "U" + range(1, types + 1) | join(", U") %}
 {%- set ordinal = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"] %}
