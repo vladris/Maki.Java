@@ -1,4 +1,4 @@
 [submodule "website"]
 	path = website
-	url = https://github.com/vladris/poke
+	url = https://github.com/vladris/maki.java
 	branch = gh-pages
