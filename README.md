@@ -2,7 +2,7 @@
 
 A Java type library.
 
-[![Build Status](https://travis-ci.org/vladris/maki.java.svg?branch=master)](https://travis-ci.org/vladris/maki.java)
+[![Build Status](https://travis-ci.org/vladris/Maki.Java.svg?branch=master)](https://travis-ci.org/vladris/Maki.Java)
 
 [Online documentation](https://vladris.com/maki.java/doc/index.html)
 
