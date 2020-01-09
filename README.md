@@ -4,7 +4,7 @@ A Java type library.
 
 [![Build Status](https://travis-ci.org/vladris/Maki.Java.svg?branch=master)](https://travis-ci.org/vladris/Maki.Java)
 
-[Online documentation](https://vladris.com/maki.java/doc/index.html)
+[Online documentation](https://vladris.com/Maki.Java/doc/index.html)
 
 Maki provides discriminate unions of up to 8 types (``Variant1<T1>``,
 ``Variant2<T1, T2>`` ... ``Variant8<T1, T2, ...>``), ``Unit`` and ``Never``,
